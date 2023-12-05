@@ -24,6 +24,12 @@
     padding: 90px 0px;
 }
 
+.calculator-display div{
+    background-color: #B0A695;
+    margin-right: 20px;
+    font-size: 30px;
+}
+
 .calculator-options {
     background-color: #776B5D;
 }
