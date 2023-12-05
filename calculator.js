@@ -63,14 +63,14 @@ funcs.forEach((func) => {
     func.addEventListener('click', () => {
         let val = func.innerText;
         if(arr[0] === "Cannot divide by zero") arr = []
-        if(arr.length === 1 && numStr != '' && funcStr != "=") {
+        if(arr.length && numStr != '' && funcStr != "=") {
             let answer = operate(arr[0], numStr, funcStr)
             numStr = answer
             total = answer
             arr = []
             arr.push(numStr)
             numStr = '';
-        } else if (numStr != "") {
+        } else if (numStr != "" && funcStr != "=") {
             arr.push(numStr);
             numStr = '';
         }
@@ -85,13 +85,15 @@ funcs.forEach((func) => {
 //adding eventlistener to equal
 const equal = document.querySelector('#equal');
 equal.addEventListener('click', () => {
-    if(arr.length === 0 && numStr != '' && funcStr != '') {
+    if(arr.length && numStr != '' && funcStr != '') {
         let answer = operate(arr[0], numStr, funcStr)
         numStr = answer
         total = answer
         arr = []
         arr.push(numStr)
-        numStr = '';
+        numStr = ''
+    } else {
+        funcStr = "="
     }
     if(total != ''){
         solution.textContent = `${total}`;
